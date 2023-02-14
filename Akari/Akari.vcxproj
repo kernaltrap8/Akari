@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|PS3">
+      <Configuration>Debug</Configuration>
+      <Platform>PS3</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|PS3">
+      <Configuration>Release</Configuration>
+      <Platform>PS3</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCTargetsPath Condition="'$(VCTargetsPath12)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath12)</VCTargetsPath>
+    <ProjectGuid>{CB83CF95-D1EC-443C-B2C1-536F7C955142}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PS3'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>SNC</PlatformToolset>
+    <NoTocRestore>NoTocRestore1</NoTocRestore>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|PS3'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>SNC</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(DebuggerFlavor)'=='PS3Debugger'" Label="OverrideDebuggerDefaults">
+    <!--LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand-->
+    <!--LocalDebuggerCommandArguments></LocalDebuggerCommandArguments-->
+    <!--LocalDebuggerCommandLine>-r -e -m</LocalDebuggerCommandLine-->
+    <!--LocalRunCommandLine>-r</LocalRunCommandLine-->
+    <!--LocalTunerCommandLine></LocalTunerCommandLine-->
+    <!--LocalDebuggerFileServingDirectory>$(ProjectDir)</LocalDebuggerFileServingDirectory-->
+    <!--LocalDebuggerHomeDirectory>$(ProjectDir)</LocalDebuggerHomeDirectory-->
+    <!--LocalDebuggerProjectFile></LocalDebuggerProjectFile-->
+    <!--LocalDebuggerResetType>Soft</LocalDebuggerResetType-->
+    <!--LocalDebuggerClearTty>False</LocalDebuggerClearTty-->
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|PS3'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|PS3'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PS3'">
+    <OutDir>$(SolutionDir)bin\$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)bin-int\$(Platform)-$(Configuration)\</IntDir>
+    <IgnoreImportLibrary>true</IgnoreImportLibrary>
+    <TargetExt>.sprx</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PS3'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;__CELL_ASSERT__;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <CppLanguageStd>Cpp11</CppLanguageStd>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendor\VirtualShell\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <InfoStripping>StripSymsAndDebug</InfoStripping>
+    </Link>
+    <Link>
+      <DataStripping>StripFuncsAndData</DataStripping>
+      <AdditionalLibraryDirectories>$(SolutionDir)vendor\VirtualShell\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libsn.a;
+libm.a;
+libio_stub.a;
+libfs_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\fno-exceptions\libstdc++_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\fno-exceptions\fno-rtti\libstdc++_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libc.a;$(SCE_PS3_ROOT)\target\ppu\lib\libc_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libstdc++_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsyscall.a;$(SCE_PS3_ROOT)\target\ppu\lib\libsysutil_stub.a;$(SCE_PS3_ROOT)\target\ppu\lib\librtc_stub.a;-lallocator_export_stub;-lcrashdump_system_export_stub;-lesecron_export_stub;-lnetctl_main_export_stub;-lpaf_export_stub;-lpngdec_ppuonly_export_stub;-lsdk_export_stub;-lstdc_export_stub;-lsys_io_export_stub;-lsys_net_export_stub;-lsysPrxForUser_export_stub;-lvsh_export_stub;-lvshmain_export_stub;-lvshcommon_export_stub;-lvshtask_export_stub;-lxsetting_export_stub;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFormat>FSPRXFile</OutputFormat>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>call "$(SolutionDir)Increment.bat" "$(SolutionDir)Akari\Core\Version.h" "BUILD_NUMBER"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|PS3'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Core\Configuration.cpp" />
+    <ClCompile Include="Core\Helpers.cpp" />
+    <ClCompile Include="Core\Hooks.cpp" />
+    <ClCompile Include="Core\Menu\Base.cpp" />
+    <ClCompile Include="Core\Menu\Overlay.cpp" />
+    <ClCompile Include="Core\Menu\Submenus.cpp" />
+    <ClCompile Include="Core\Exports\vsh\vshcommon.cpp" />
+    <ClCompile Include="Core\Exports\vsh\vshmain.cpp" />
+    <ClCompile Include="Core\Rendering.cpp" />
+    <ClCompile Include="Core\Exports\paf\PhHandler.cpp" />
+    <ClCompile Include="Core\Exports\paf\PhPlane.cpp" />
+    <ClCompile Include="Core\Exports\paf\PhText.cpp" />
+    <ClCompile Include="Core\Exports\paf\PhWidget.cpp" />
+    <ClCompile Include="Core\Exports\paf\Surface.cpp" />
+    <ClCompile Include="Core\Exports\paf\View.cpp" />
+    <ClCompile Include="prxmain.cpp" />
+    <ClCompile Include="Utilities\Math.cpp" />
+    <ClCompile Include="Utilities\Math\Easing.cpp" />
+    <ClCompile Include="Utilities\Math\vec2.cpp" />
+    <ClCompile Include="Utilities\Math\vec3.cpp" />
+    <ClCompile Include="Utilities\Math\vec4.cpp" />
+    <ClCompile Include="Utilities\Memory.cpp" />
+    <ClCompile Include="Utilities\Memory\Detours.cpp" />
+    <ClCompile Include="Utilities\Memory\ImportsExports.cpp" />
+    <ClCompile Include="Utilities\Memory\Patterns.cpp" />
+    <ClCompile Include="Utilities\System.cpp" />
+    <ClCompile Include="Utilities\System\ConsoleInfo.cpp" />
+    <ClCompile Include="Utilities\System\ConvertUTF.cpp" />
+    <ClCompile Include="Utilities\System\File.cpp" />
+    <ClCompile Include="Core\Input.cpp" />
+    <ClCompile Include="Utilities\System\SystemCalls.cpp" />
+    <ClCompile Include="Utilities\System\Timers.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Configuration.h" />
+    <ClInclude Include="Core\Helpers.h" />
+    <ClInclude Include="Core\Hooks.h" />
+    <ClInclude Include="Core\Menu\Base.h" />
+    <ClInclude Include="Core\Menu\Overlay.h" />
+    <ClInclude Include="Core\Menu\Submenus.h" />
+    <ClInclude Include="Core\Version.h" />
+    <ClInclude Include="Core\Exports\vsh\vshcommon.h" />
+    <ClInclude Include="Core\Exports\vsh\vshmain.h" />
+    <ClInclude Include="Core\Rendering.h" />
+    <ClInclude Include="Core\Exports\paf\PhHandler.h" />
+    <ClInclude Include="Core\Exports\paf\PhPlane.h" />
+    <ClInclude Include="Core\Exports\paf\PhText.h" />
+    <ClInclude Include="Core\Exports\paf\PhWidget.h" />
+    <ClInclude Include="Core\Exports\paf\Surface.h" />
+    <ClInclude Include="Core\Exports\paf\View.h" />
+    <ClInclude Include="Utilities\Math.h" />
+    <ClInclude Include="Utilities\Math\Easing.h" />
+    <ClInclude Include="Utilities\Math\vec2.h" />
+    <ClInclude Include="Utilities\Math\vec3.h" />
+    <ClInclude Include="Utilities\Math\vec4.h" />
+    <ClInclude Include="Utilities\Memory.h" />
+    <ClInclude Include="Utilities\Memory\Detours.h" />
+    <ClInclude Include="Utilities\Memory\ImportsExports.h" />
+    <ClInclude Include="Utilities\Memory\Patterns.h" />
+    <ClInclude Include="Utilities\System.h" />
+    <ClInclude Include="Utilities\System\ConsoleInfo.h" />
+    <ClInclude Include="Utilities\System\ConvertUTF.h" />
+    <ClInclude Include="Utilities\System\File.h" />
+    <ClInclude Include="Core\Input.h" />
+    <ClInclude Include="Utilities\System\SimpleIni.h" />
+    <ClInclude Include="Utilities\System\SystemCalls.h" />
+    <ClInclude Include="Utilities\System\Timers.h" />
+  </ItemGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
