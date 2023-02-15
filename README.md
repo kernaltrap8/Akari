@@ -23,6 +23,6 @@ A fully customizable VSH menu with multiple functionalities.
 - Thanks to WoddenPlankGames on Discord: https://github.com/Maxwelldoug @Maxwelldoug
 
 ## Credits
-Original plugin, source, and assets: (github.com/jordywastaken/)[jordywastaken]
+Original plugin, source, and assets: [jordywastaken](github.com/jordywastaken/)
 
 
