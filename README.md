@@ -22,3 +22,7 @@ A fully customizable VSH menu with multiple functionalities.
 - I am not the original author of this VSH Plugin. He quit, and I am now the sole author and maintainer of Akari. All credits to him for the original code.
 - Thanks to WoddenPlankGames on Discord: https://github.com/Maxwelldoug @Maxwelldoug
 
+## Credits
+Original plugin, source, and assets: @jordywastaken
+
+
