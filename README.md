@@ -19,7 +19,7 @@ A fully customizable VSH menu with multiple functionalities.
 - [Fixed std library](https://github.com/skiff/libpsutil/releases "Fixed std library")
 
 ## Notes
-- I am not the original author of this VSH Plugin. He quit, and I am now the sole author and maintainer of Akari. All credits to him for the original code.
+- I am not the original author of this VSH Plugin. This is the Lgeacy version. Credits to @jordywastaken
 - Thanks to WoddenPlankGames on Discord: https://github.com/Maxwelldoug @Maxwelldoug
 
 ## Credits
