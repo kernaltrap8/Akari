@@ -22,6 +22,9 @@ A fully customizable VSH menu with multiple functionalities.
 - I am not the original author of this VSH Plugin. This is the Lgeacy version. Credits to @jordywastaken
 - Thanks to WoddenPlankGames on Discord: https://github.com/Maxwelldoug @Maxwelldoug
 
+# Install
+Place `Akari.sprx` from Releases tab into `/dev_hdd0/plugins` and add `/dev_hdd0/plugins/Akari.sprx` to your `boot_plugins.txt`.
+
 ## Credits
 Original plugin, source, and assets: [jordywastaken](https://github.com/jordywastaken/)
 
